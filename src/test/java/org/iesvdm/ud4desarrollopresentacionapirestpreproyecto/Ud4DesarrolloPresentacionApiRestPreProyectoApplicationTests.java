@@ -2,9 +2,11 @@ package org.iesvdm.ud4desarrollopresentacionapirestpreproyecto;
 
 import jakarta.transaction.Transactional;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.domain.ArteMarcial;
+import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.domain.Horario;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.domain.Maestro;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.domain.Sesion;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.repository.ArteMarcialRepository;
+import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.repository.HorarioRepository;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.repository.MaestroRepository;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.repository.SesionRepository;
 import org.junit.jupiter.api.*;
@@ -12,12 +14,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.beans.Transient;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class Ud4DesarrolloPresentacionApiRestPreProyectoApplicationTests {
+
+	@Autowired
+	private HorarioRepository horarioRepository;
 
 	@Autowired
 	private MaestroRepository maestroRepository;
@@ -251,5 +259,48 @@ class Ud4DesarrolloPresentacionApiRestPreProyectoApplicationTests {
 		maestroRepository.save(maestro3);
 		maestroRepository.save(maestro4);
 		maestroRepository.save(maestro5);
+	}
+
+	@Test
+	@Order(6)
+	void testFindSesions() {
+		Sesion sesion = new Sesion(0
+				, "The Ultimate Warrior"
+				, 10
+				, true,new HashSet<>()
+				, arteMarcialRepository.findById(1).get()
+				,new HashSet<>());
+		sesionRepository.save(sesion);
+
+		Horario horario = Horario.builder()
+				.fecha(LocalDate.now())
+				.horaInicio(LocalTime.of(8, 15))
+				.horaFin(LocalTime.of(10,30))
+				.build();
+
+		Horario horario2 = Horario.builder()
+				.fecha(LocalDate.now())
+				.horaInicio(LocalTime.of(18, 15))
+				.horaFin(LocalTime.of(22,30))
+				.build();
+
+		this.horarioRepository.save(horario);
+		this.horarioRepository.save(horario2);
+
+		sesion.getHorarios().add(horario);
+		sesion.getHorarios().add(horario2);
+
+		sesionRepository.save(sesion);
+
+	}
+
+	@Test
+	@Order(7)
+	void testFindSesionHorarios()  {
+
+		List<Sesion> sesionList = sesionRepository.findSesionsByArteMarcial_NombreIgnoreCaseOrderByHorarios_FechaAscHorarios_HoraInicioAsc("art_1");
+
+		sesionList.forEach(System.out::println);
+
 	}
 }
