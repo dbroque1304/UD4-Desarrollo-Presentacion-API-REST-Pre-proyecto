@@ -22,6 +22,6 @@ public class Usuario {
     private String apellido2;
     private String telefono;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "usuarios")
     private Set<Sesion> sesiones;
 }

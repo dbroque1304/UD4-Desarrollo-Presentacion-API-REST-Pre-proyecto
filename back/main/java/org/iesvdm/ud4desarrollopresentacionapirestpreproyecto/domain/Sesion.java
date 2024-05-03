@@ -50,4 +50,6 @@ public class Sesion {
         this.arteMarcial = arteMarcial;
         this.maestros = maestros;
     }
+    @ManyToMany
+    Set<Usuario> usuarios;
 }
