@@ -1,33 +1,3 @@
-<mat-toolbar color="primary" class="bg-gray-custom fixed-top">
-  <div class="container-fluid col-10">
-    <a routerLink="/" class="navbar-brand m-auto col">
-      <img src="./assets/images/logo.png" width="50" alt="Logo">
-    </a>
-    <button mat-icon-button class="navbar-toggler bg-danger" (click)="toggleNavbar()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div class="col-11">
-      <div  class="offcanvas bg-gray-custom offcanvas-end col-12" tabindex="-1">
-        <div class="offcanvas-header justify-content-center">
-          <a routerLink="/" class="navbar-brand m-auto">
-            <img src="./assets/images/logo.png" width="50" alt="Logo">
-          </a>
-        </div>
-        <div class="offcanvas-body bg-gray-custom">
-          <mat-nav-list>
-            <a mat-list-item routerLink="/" routerLinkActive="active">Inicio</a>
-            <a mat-list-item routerLink="/eventos" routerLinkActive="active">Eventos</a>
-            <a mat-list-item routerLink="/ranking" routerLinkActive="active">Ranking</a>
-            <a mat-list-item routerLink="/comunidad" routerLinkActive="active">Comunidad</a>
-          </mat-nav-list>
-          <button mat-raised-button color="warn" class="col">Registrarse</button>
-          <button mat-button class="col">Iniciar Sesión</button>
-          <mat-form-field class="col">
-            <input matInput type="text" placeholder="Buscar">
-          </mat-form-field>
-          <button mat-raised-button color="warn" class="col">Buscar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</mat-toolbar>
+<app-navbar></app-navbar>
+<h1>imagen</h1>
+

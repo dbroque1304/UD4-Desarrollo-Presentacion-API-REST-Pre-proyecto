@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Gabarito';
+    src: url(../resources/fonts/Gabarito/static/Gabarito-Regular.ttf) format('truetype');
+}
+* {
+    font-family: 'Gabarito';
+}
+mat-toolbar{
+    display: flex;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
