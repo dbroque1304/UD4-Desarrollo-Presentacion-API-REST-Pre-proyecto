@@ -1,0 +1,69 @@
+// mat-toolbar {
+//     display: grid;
+//     grid-template-columns: 100%;
+//     align-items: center;
+//     justify-content: center;
+//     height: 100vh;
+//     background-image: url("../../../assets/images/navbar-1.jpg");
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     background-position: center;
+
+//     mat-toolbar-row {
+//       max-width: 1100px;
+//       display: grid;
+//       grid-template-columns: 100%;
+//     }
+
+//     img {
+//       justify-self: center;
+//       grid-column: 1/3;
+//     }
+
+//     ul {
+//       list-style-type: none;
+//       display: flex;
+//       background-color: blue;
+//       justify-content: center;
+//       grid-column: 1/3;
+//     }
+//   }
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../../../assets/images/navbar-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    justify-content: center;
+  }
+
+  img {
+    margin-bottom: 20px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Gabarito';
+  }
+
+}
