@@ -264,12 +264,8 @@ class Ud4DesarrolloPresentacionApiRestPreProyectoApplicationTests {
 	@Test
 	@Order(6)
 	void testFindSesions() {
-		Sesion sesion = new Sesion(0
-				, "The Ultimate Warrior"
-				, 10
-				, true,new HashSet<>()
-				, arteMarcialRepository.findById(1).get()
-				,new HashSet<>());
+		/*TODO*/
+		Sesion sesion = new Sesion(0,"The Ultimate Warrior", 10, true, arteMarcialRepository.findById(1).get(), new HashSet<>());
 		sesionRepository.save(sesion);
 
 		Horario horario = Horario.builder()
