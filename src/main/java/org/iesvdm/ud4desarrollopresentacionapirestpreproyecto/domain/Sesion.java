@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Sesion")
@@ -31,7 +32,10 @@ public class Sesion {
 
 
     @OneToMany(fetch = FetchType.EAGER)
-    private Set<Horario> horarios;
+    //Aparte de la posibilidad de seteo por constructor, puedes tener siempre
+    //un seteo de inicializacion en el atributo, si como te ocurre
+    //no utilizas el constructor adecuado
+    private Set<Horario> horarios = new HashSet<>();
 
     @ManyToOne
     @JsonIgnore
@@ -41,7 +45,7 @@ public class Sesion {
     @ManyToMany
     @JsonIgnore
     @ToString.Exclude
-    private Set<Maestro> maestros;
+    private Set<Maestro> maestros  = new HashSet<>();;
 
     public Sesion(int id, String nombre, int num_plazas, boolean paraMayores, ArteMarcial arteMarcial, Set<Maestro> maestros) {
         this.id = id;
@@ -52,6 +56,6 @@ public class Sesion {
         this.maestros = maestros;
     }
     @ManyToMany
-    Set<Usuario> usuarios;
+    Set<Usuario> usuarios  = new HashSet<>();;
 
 }

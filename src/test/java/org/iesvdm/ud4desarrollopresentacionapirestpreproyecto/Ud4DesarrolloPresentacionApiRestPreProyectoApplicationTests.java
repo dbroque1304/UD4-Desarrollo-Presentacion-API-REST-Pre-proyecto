@@ -1,6 +1,8 @@
 package org.iesvdm.ud4desarrollopresentacionapirestpreproyecto;
 
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
+import org.hibernate.Hibernate;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.domain.ArteMarcial;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.domain.Horario;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.domain.Maestro;
@@ -9,9 +11,12 @@ import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.repository.ArteMar
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.repository.HorarioRepository;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.repository.MaestroRepository;
 import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.repository.SesionRepository;
+import org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.util.UtilJPA;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import java.beans.Transient;
 import java.time.LocalDate;
@@ -23,6 +28,12 @@ import java.util.Set;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class Ud4DesarrolloPresentacionApiRestPreProyectoApplicationTests {
+
+	@Autowired
+	EntityManager entityManager;
+	@Autowired
+	private PlatformTransactionManager transactionManager;
+	private TransactionTemplate transactionTemplate;
 
 	@Autowired
 	private HorarioRepository horarioRepository;
@@ -68,6 +79,11 @@ class Ud4DesarrolloPresentacionApiRestPreProyectoApplicationTests {
 	private static final Set<Sesion> sesionSet3 = new HashSet<>();
 	private static final Set<Sesion> sesionSet4 = new HashSet<>();
 	private static final Set<Sesion> sesionSet5 = new HashSet<>();
+
+	@BeforeEach
+	public void setUp() {
+		transactionTemplate = new TransactionTemplate(transactionManager);
+	}
 	@BeforeAll
 	static void contextLoads() {
 		/*Creación de maestros*/
@@ -265,7 +281,20 @@ class Ud4DesarrolloPresentacionApiRestPreProyectoApplicationTests {
 	@Order(6)
 	void testFindSesions() {
 		/*TODO*/
-		Sesion sesion = new Sesion(0,"The Ultimate Warrior", 10, true, arteMarcialRepository.findById(1).get(), new HashSet<>());
+		//Te recomiendo que utilices .builder() para evitar estos problemas
+		//si lo utilizas quiza lo veas mejor. Por otro lado, siempre puedes inicializar
+		//en sesion las colecciones aunque luego la sobreescribas con el builder o el constructor
+		//de esta forma tienes otro nivel de guarda si no lo seteas.
+		//Sesion sesion = new Sesion(0,"The Ultimate Warrior", 10, true, arteMarcialRepository.findById(1).get(), new HashSet<>());
+		Sesion sesion = Sesion.builder().nombre("The Ultimate Warrior")
+						.num_plazas(10)
+						.paraMayores(true)
+						.arteMarcial(arteMarcialRepository.findById(1).get())
+						.maestros(new HashSet<>())
+						.horarios(new HashSet<>())
+						.usuarios(new HashSet<>())
+						.build();
+
 		sesionRepository.save(sesion);
 
 		Horario horario = Horario.builder()
@@ -294,9 +323,14 @@ class Ud4DesarrolloPresentacionApiRestPreProyectoApplicationTests {
 	@Order(7)
 	void testFindSesionHorarios()  {
 
-		List<Sesion> sesionList = sesionRepository.findSesionsByArteMarcial_NombreIgnoreCaseOrderByHorarios_FechaAscHorarios_HoraInicioAsc("art_1");
-
-		sesionList.forEach(System.out::println);
+		Boolean exit = transactionTemplate.execute(status -> {
+			List<Sesion> sesionList = sesionRepository.findSesionsByArteMarcial_NombreIgnoreCaseOrderByHorarios_FechaAscHorarios_HoraInicioAsc("art_1");
+			//Puesto que en el toString accedes a colecciones de sesion que estan en modo lazy
+			//necesitas hacerlo de modo transaccional para que se resuelvan estos lazy en
+			//en el test
+			sesionList.forEach(System.out::println);
+			return true;
+		});
 
 	}
 }
