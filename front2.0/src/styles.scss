@@ -140,4 +140,14 @@ $bluesky-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Gabarito, "Helvetica Neue", sans-serif; 
+background-color: #f5f5e9;}
+@font-face {
+  font-family: 'Gabarito';
+  src: url(../src/resources/fonts/Gabarito/Gabarito-VariableFont_wght.ttf) format('truetype');
+}
+* {
+  font-family: 'Gabarito';
+  margin: 0;
+  padding: 0;
+}

@@ -15,7 +15,7 @@ export interface ArteMarcial {
     sesiones: Sesion[],
     maestros: Maestro[]
 }
-export interface Sesion{
+export interface Sesion {
     id:number,
     nombre: string,
     num_plazas: number,
