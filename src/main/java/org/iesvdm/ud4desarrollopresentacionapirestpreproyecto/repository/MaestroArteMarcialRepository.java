@@ -1,0 +1,2 @@
+package org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.repository;public interface MaestroArteMarcialRepository {
+}
