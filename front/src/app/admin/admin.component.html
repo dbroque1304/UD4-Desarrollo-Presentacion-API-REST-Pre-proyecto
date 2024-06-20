@@ -1,0 +1,52 @@
+<div class="admin-container">
+    <h1>Admin Panel</h1>
+    <div class="admin-section">
+      <h2>Usuarios</h2>
+      <ul>
+        <li *ngFor="let usuario of usuarios">
+          {{ usuario.nombre }} {{ usuario.apellidos }}
+          <button (click)="deleteUser(usuario.id)">Eliminar</button>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="admin-section">
+      <h2>Maestros</h2>
+      <ul>
+        <li *ngFor="let maestro of maestros">
+          {{ maestro.nombre }} {{ maestro.apellido1 }} {{ maestro.apellido2 }}
+          <button (click)="deleteMaestro(maestro.id)">Eliminar</button>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="admin-section">
+      <h2>Artes Marciales</h2>
+      <ul>
+        <li *ngFor="let arteMarcial of artesMarciales">
+          {{ arteMarcial.nombre }}
+          <button (click)="deleteArteMarcial(arteMarcial.id)">Eliminar</button>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="admin-section">
+      <h2>Sesiones</h2>
+      <ul>
+        <li *ngFor="let sesion of sesiones">
+          {{ sesion.nombre }}
+          <button (click)="deleteSesion(sesion.id)">Eliminar</button>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="admin-section">
+      <h2>Horarios</h2>
+      <ul>
+        <li *ngFor="let horario of horarios">
+          {{ horario.dia }} {{ horario.horaInicio }} - {{horario.horaFin}}
+          <button (click)="deleteHorario(horario.id)">Eliminar</button>
+        </li>
+      </ul>
+    </div>
+  </div>

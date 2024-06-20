@@ -1,0 +1,42 @@
+.admin-container {
+    padding: 20px;
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .admin-section {
+      margin-bottom: 20px;
+  
+      h2 {
+        margin-bottom: 10px;
+      }
+  
+      ul {
+        list-style: none;
+        padding: 0;
+  
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          border-bottom: 1px solid #ccc;
+  
+          button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+  
+            &:hover {
+              background-color: #c82333;
+            }
+          }
+        }
+      }
+    }
+  }

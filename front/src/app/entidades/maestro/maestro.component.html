@@ -1,1 +1,38 @@
-<p>maestro works!</p>
+<div class="container">
+    <div class="maestro-card">
+        <div class="maestro-detail">
+            <img src="https://via.placeholder.com/300" alt="Placeholder Image">
+            <div>
+                <h1>{{ maestro.nombre }} {{ maestro.apellido1 }} {{ maestro.apellido2 }}</h1>
+                <div>
+                    <p><strong>Teléfono:</strong> {{ maestro.telefono }}</p>
+                    <p><strong>Email:</strong> {{ maestro.email }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="sesiones-artesMarciales">
+            <div class="section artes-marciales-section">
+                <h2>Artes Marciales:</h2>
+                <div class="artes-marciales">
+                    <div class="arte-marcial-card" *ngFor="let arteMarcial of maestro.maestroArteMarcials">
+                        <h3>{{ arteMarcial.id.arteMarcial.nombre }}</h3>
+                        <p>Rango: {{arteMarcial.rango}}</p>
+                        <a (click)="goToArteMarcialDetail(arteMarcial.id.arteMarcial.id)" class="detail-button"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="section sesiones-section">
+                <h2>Sesiones:</h2>
+                <div class="sesiones">
+                    <div class="sesion-card"  *ngFor="let sesion of maestro?.sesiones">
+                        <h3>{{ sesion.nombre }}</h3>
+                        <a (click)="goToSesionDetail(sesion.id)" class="detail-button"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        
+    </div>
+</div>

@@ -8,7 +8,7 @@ describe('MaestroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MaestroComponent]
+      imports: [MaestroComponent]
     })
     .compileComponents();
     

@@ -5,3 +5,41 @@
 * {
     font-family: 'Gabarito';
 }
+body{
+    background-color: #f5f5e9;
+}
+// HOME COMPONENT
+
+
+.container {
+  background-color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+div {
+    text-align: center;
+}
+.custom-card {
+    padding: 16px;
+    align-items: center;
+    gap: 16px;
+}
+  
+  .card-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .media-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

@@ -1,0 +1,11 @@
+<mat-toolbar class="navbar">
+    <div routerLinkActive="active" class="nav">
+        <a mat-button [routerLink]="['/']" class="logo"></a>
+        <a mat-button [routerLink]="['/eventos']">Eventos</a>
+        <a mat-button [routerLink]="['/tarifas']">Tarifas</a>
+        <a mat-button [routerLink]="['/horario']">Horario</a>
+        <a mat-button [routerLink]="['/maestros']">Maestros</a>
+        <a mat-button (click)="loginOrProfile()" class="login-link"></a>
+        <a mat-button *ngIf="storageService.isLoggedIn()" (click)="logOut()" class="logout-link">Cerrar Sesion</a>
+    </div>
+</mat-toolbar>

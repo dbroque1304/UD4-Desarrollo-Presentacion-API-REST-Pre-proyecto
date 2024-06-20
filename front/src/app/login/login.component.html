@@ -1,0 +1,28 @@
+<body>
+    <div  class="login-container">
+        <div class="login-form">
+          <h2>Iniciar Sesión</h2>
+          <form [formGroup]="form" (ngSubmit)="login()">
+            <label class="error" *ngIf="mensajeError" for="">Usuario o contraseña incorrectos</label>
+            <div class="form-group">
+              <label for="nombreUsuario">Usuario:</label>
+              <input
+              formControlName="nombreUsuario" 
+              type="text" 
+              id="nombreUsuario"
+               required>
+            </div>
+            <div class="form-group">
+              <label for="contraseña">Contraseña:</label>
+              <input
+               formControlName="contraseña"
+               type="password" id="contraseña"  required>
+            </div>
+            <button type="submit">Ingresar</button>
+          </form>
+          <p class="register-link" routerLinkActive="active">¿No tienes cuenta? 
+            <a [routerLink]="['/register']">Regístrate</a>
+          </p>
+        </div>
+      </div>
+</body>

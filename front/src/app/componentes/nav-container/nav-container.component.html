@@ -1,0 +1,9 @@
+<ng-container *ngIf="!isLogin; else noNav">
+  <ng-container *ngIf="isHome; else otherNav">
+    <app-navbar-home></app-navbar-home>
+  </ng-container>
+  <ng-template #otherNav>
+    <app-nav></app-nav>
+  </ng-template>
+</ng-container>
+<ng-template #noNav></ng-template>

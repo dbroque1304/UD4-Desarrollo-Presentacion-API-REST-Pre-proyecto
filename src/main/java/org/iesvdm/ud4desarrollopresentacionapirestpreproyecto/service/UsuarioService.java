@@ -18,6 +18,9 @@ public class UsuarioService {
     }
 
 
+    public List<Usuario> fincUsuariosBy_Id(int id){
+        return this.usuarioRepository.findUsuariosById(id);
+    }
     public List<Usuario> all() {
         return this.usuarioRepository.findAll();
     }
@@ -26,6 +29,9 @@ public class UsuarioService {
         return this.usuarioRepository.save(usuario);
     }
 
+    public Usuario login(Usuario usuario){
+        return this.usuarioRepository.findUsuarioByNombreUsuario(usuario.getNombreUsuario());
+    }
     public Usuario one(Integer id) {
         return this.usuarioRepository.findById(id)
                 .orElseThrow(() -> new UsuarioNotFoundException(id));

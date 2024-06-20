@@ -32,20 +32,15 @@ public class Sesion {
 
 
     @OneToMany(fetch = FetchType.EAGER)
-    //Aparte de la posibilidad de seteo por constructor, puedes tener siempre
-    //un seteo de inicializacion en el atributo, si como te ocurre
-    //no utilizas el constructor adecuado
     private Set<Horario> horarios = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnore
     @ToString.Exclude
     private ArteMarcial arteMarcial;
 
     @ManyToMany
-    @JsonIgnore
     @ToString.Exclude
-    private Set<Maestro> maestros  = new HashSet<>();;
+    private Set<Maestro> maestros  = new HashSet<>();
 
     public Sesion(int id, String nombre, int num_plazas, boolean paraMayores, ArteMarcial arteMarcial, Set<Maestro> maestros) {
         this.id = id;

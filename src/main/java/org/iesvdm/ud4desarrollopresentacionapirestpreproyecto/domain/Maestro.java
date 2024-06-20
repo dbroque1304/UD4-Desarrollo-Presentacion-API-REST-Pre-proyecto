@@ -32,14 +32,16 @@ public class Maestro {
     @Column(name = "telefono")
     private String telefono;
 
+    @Column(name = "email")
+    private String email;
+
+
+
     @ManyToMany(mappedBy = "maestros")
-    @ToString.Exclude
     @JsonIgnore
     private Set<Sesion> sesiones;
 
-    @ManyToMany
-    @ToString.Exclude
-    @JsonIgnore
-    private Set<ArteMarcial> artesMarciales;
+    @OneToMany(mappedBy = "id.maestro")
+    private Set<MaestroArteMarcial> maestroArteMarcials;
 
 }

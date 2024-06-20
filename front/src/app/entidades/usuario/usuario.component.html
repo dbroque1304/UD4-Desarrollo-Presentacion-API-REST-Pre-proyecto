@@ -1,1 +1,39 @@
-<p>usuario works!</p>
+<div class="container">
+    <div class="usuario-card">
+        <div class="usuario-detail">
+            <div>
+                <h1>{{ usuario.nombre }} {{ usuario.apellidos }}</h1>
+                <div>
+                    <p><strong>Nombre de Usuario:</strong> {{ usuario.nombreUsuario }}</p>
+                    <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+                    <p><strong>Email:</strong> {{ usuario.email }}</p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="usuario.usuarioArteMarcials.length > 0" class="sesiones-artesMarciales">
+            <div class="section artes-marciales-section">
+                <h2>Artes Marciales:</h2>
+                <div class="artes-marciales">
+                    <div class="arte-marcial-card" *ngFor="let arteMarcial of usuario.usuarioArteMarcials">
+                        <h3>{{ arteMarcial.id.arteMarcial.nombre }}</h3>
+                        <p>Rango: {{arteMarcial.rango}}</p>
+                        <a (click)="goToArteMarcialDetail(arteMarcial.id.arteMarcial.id)" class="detail-button"></a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="usuario.sesiones" class="section sesiones-section">
+                <h2>Sesiones:</h2>
+                <div class="sesiones">
+                    <div class="sesion-card"  *ngFor="let sesion of usuario.sesiones">
+                        <h3>{{ sesion.nombre }}</h3>
+                        <a (click)="goToSesionDetail(sesion.id)" class="detail-button"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        
+    </div>
+</div>

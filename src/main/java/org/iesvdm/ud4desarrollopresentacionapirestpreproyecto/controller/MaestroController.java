@@ -14,7 +14,7 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/v1/api/maestro")
+@RequestMapping("/v1/api/maestros")
 public class MaestroController {
     private final MaestroService maestroService;
     public MaestroController(MaestroService maestroService){this.maestroService = maestroService;}
@@ -31,6 +31,12 @@ public class MaestroController {
         log.info("Accediendo a todos los Maestros");
         return this.maestroService.allByNombre(optBuscar,optOrdenar);
     }
+
+    @GetMapping("/findMaestrosByArteMarcial")
+    public List<Maestro> findMaestrosBy_Id(@RequestParam int id){
+        return this.maestroService.findMaestrosBy_Id(id);
+    }
+
 
     @PostMapping({"","/"})
     public Maestro newMaestro(@RequestBody Maestro maestro) {

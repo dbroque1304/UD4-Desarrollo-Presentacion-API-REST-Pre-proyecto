@@ -27,8 +27,11 @@ public class ArteMarcial {
     @ToString.Exclude
     private Set<Sesion> sesiones;
 
-    @ManyToMany(mappedBy = "artesMarciales")
     @JsonIgnore
-    @ToString.Exclude
-    private Set<Maestro> maestros;
+    @OneToMany(mappedBy = "id.arteMarcial")
+    private Set<MaestroArteMarcial> maestroArteMarcials;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "id.arteMarcial")
+    private Set<UsuarioArteMarcial> usuarioArteMarcials;
 }

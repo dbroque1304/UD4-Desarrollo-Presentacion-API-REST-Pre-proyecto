@@ -49,6 +49,16 @@ public class SesionService {
                 .orElseThrow(() -> new SesionNotFoundException(id));
     }
 
+    public List<Sesion> findSesionsByMaestro_Id(int id){
+        return this.sesionRepository.findSesionsByMaestros_Id(id);
+    }
+
+    public List<Sesion> findSesionsByUsuario_Id(int id){
+        return this.sesionRepository.findSesionsByUsuarios_Id(id);
+    }
+    public List<Sesion> findSesionsByArteMarcial_Id(int id){
+        return this.sesionRepository.findSesionsByArteMarcial_Id(id);
+    }
     public Sesion replace(Integer id, Sesion sesion) {
         return this.sesionRepository.findById(id).map(s -> (id.equals(sesion.getId()) ?
                         this.sesionRepository.save(sesion) : null))

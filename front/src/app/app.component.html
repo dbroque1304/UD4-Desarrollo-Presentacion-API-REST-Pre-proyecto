@@ -1,1 +1,19 @@
-<app-navbar-home></app-navbar-home>
+<app-nav-container></app-nav-container>
+<router-outlet></router-outlet>
+<div *ngIf="isHome" class="container">
+    <h2>¡Bienvenido a The Dojo!</h2>
+    <div class="custom-card">
+        <div class="card-content">
+            <div class="text-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum
+                    vestibulum.</p>
+            </div>
+            <div class="media-content">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
+            </div>
+        </div>
+    </div>
+    <mat-card>
+        
+    </mat-card>
+</div>

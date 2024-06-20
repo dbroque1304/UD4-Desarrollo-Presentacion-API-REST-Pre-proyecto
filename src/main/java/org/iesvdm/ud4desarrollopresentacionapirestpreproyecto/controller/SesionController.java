@@ -33,6 +33,21 @@ public class SesionController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping(value = "/findSesionsByMaestro")
+    public List<Sesion> findSesionsByMaestro_Id(@RequestParam int id){
+        return this.sesionService.findSesionsByMaestro_Id(id);
+    }
+
+    @GetMapping("/findSesionsByUsuario")
+    public List<Sesion> findSesionsByUsuario_Id(@RequestParam int id){
+        return this.sesionService.findSesionsByUsuario_Id(id);
+    }
+    @GetMapping("/findSesionsByArteMarcial")
+    public List<Sesion> findSesionsByArteMarcial_Id(@RequestParam int id){
+        return this.sesionService.findSesionsByArteMarcial_Id(id);
+    }
+
+
     @PostMapping({"","/"})
     public Sesion newSesion(@RequestBody Sesion sesion) {
         return this.sesionService.save(sesion);

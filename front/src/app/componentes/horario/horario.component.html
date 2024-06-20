@@ -1,0 +1,32 @@
+<div class="horario-container">
+  <table class="horario-table">
+    <thead>
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>18:30 - 19:30</td>
+        <td *ngFor="let dia of [1, 2, 3, 4, 5]">
+          <div *ngFor="let sesion of getSesionesPorHora(dia, '18:30:00', '19:30:00')">
+            <a (click)="goToSesionDetail(sesion.id)">{{ sesion.nombre }}</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>19:30 - 20:30</td>
+        <td *ngFor="let dia of [1, 2, 3, 4, 5]">
+          <div *ngFor="let sesion of getSesionesPorHora(dia, '19:30:00', '20:30:00')">
+            <a (click)="goToSesionDetail(sesion.id)">{{ sesion.nombre }}</a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

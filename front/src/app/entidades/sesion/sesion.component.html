@@ -1,1 +1,43 @@
-<p>sesion works!</p>
+<div class="container">
+  <div class="sesion-card" *ngIf="sesion">
+    <div class="sesion-detail">
+      <div>
+        <h1>{{ sesion.nombre }}</h1>
+        <p>Plazas: {{ sesion.num_plazas }}</p>
+        <p>Para mayores: {{ sesion.paraMayores ? 'Sí' : 'No' }}</p>
+      </div>
+    </div>
+  
+    <div class="maestros-artesMarciales">
+      <div class="section maestros-section">
+        <h2>Maestros:</h2>
+        <div class="maestros">
+          <div class="maestro-card" *ngFor="let maestro of sesion.maestros">
+            <h3>{{ maestro.nombre }}</h3>
+            <a (click)="goToMaestroDetail(maestro.id)" class="detail-button"></a>
+          </div>
+        </div>
+      </div>
+      <div class="section artes-marciales-section">
+        <h2>Artes Marciales:</h2>
+        <div class="artes-marciales">
+          <div class="arte-marcial-card">
+            <h3>{{ sesion.arteMarcial.nombre }}</h3>
+            <a (click)="goToArteMarcialDetail(sesion.arteMarcial.id)" class="detail-button"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="section">
+      <h2>Usuarios:</h2>
+      <div class="usuarios">
+        <div class="usuario-card" *ngFor="let usuario of sesion.usuarios">
+          <h3>{{ usuario.nombreUsuario }}</h3>
+          <a (click)="goToUsuarioDetail(usuario.id)" class="detail-button"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

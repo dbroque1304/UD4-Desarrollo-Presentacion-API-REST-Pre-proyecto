@@ -28,6 +28,9 @@ public class MaestroService {
         return this.maestroCustomRepository.findByNombreContainingIgnoreCaseOrderByNombre(optBuscar, optOrdenar);
     }
 
+    public List<Maestro> findMaestrosBy_Id(int id){
+        return this.maestroRepository.findMaestrosById(id);
+    }
     public Maestro save(Maestro maestro) {
         return this.maestroRepository.save(maestro);
     }

@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="maestro-card" *ngFor="let maestro of maestrosList">
+      <img src="https://via.placeholder.com/300" width="50px" alt="Placeholder Image">
+      <div>
+        <h3>{{ maestro.nombre }}</h3>
+        <a (click)="goToMaestroDetail(maestro.id)" class="detail-button"></a>
+      </div>
+    </div>
+  </div>

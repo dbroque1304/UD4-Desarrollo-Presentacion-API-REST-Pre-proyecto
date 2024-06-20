@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="arte-marcial-card">
+        <div class="arte-marcial-detail">
+            <div>
+                <h1>{{arteMarcial?.nombre}}</h1>
+            </div>
+        </div>
+        <div class="maestros-usuarios">
+            <div class="section maestros-section">
+                <h2>Maestros:</h2>
+                <div class="maestros">
+                    <div class="maestro-card" *ngFor="let maestro of maestros">
+                        <h3>{{ maestro.nombre }}</h3>
+                        <a (click)="goToMaestroDetail(maestro.id)" class="detail-button"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="section usuarios-section">
+                <h2>Usuarios:</h2>
+                <div class="usuarios">
+                    <div class="usuario-card" *ngFor="let usuario of usuarios">
+                        <h3>{{usuario.nombre}}</h3>
+                        <a (click)="goToUsuarioDetail(usuario.id)" class="detail-button"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section sesiones-section">
+            <h2>Sesiones:</h2>
+            <div class="sesiones">
+                <div class="sesion-card" *ngFor="let sesion of sesiones">
+                    <h3>{{ sesion.nombre }}</h3>
+                    <a (click)="goToSesionDetail(sesion.id)" class="detail-button"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

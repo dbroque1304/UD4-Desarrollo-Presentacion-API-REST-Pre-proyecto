@@ -1,0 +1,51 @@
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../../../assets/images/navbar-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  div {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    justify-content: center;
+  }
+
+  img {
+    margin-bottom: 20px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  ul {
+    width: 100%;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    align-items: center;
+    justify-content: space-around;
+  }
+  li {
+    padding: 20px 0;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    border-radius: 4px; 
+    transition: color 0.3s; 
+  }
+  li:hover >a {
+    color: red
+  }
+  
+
+}

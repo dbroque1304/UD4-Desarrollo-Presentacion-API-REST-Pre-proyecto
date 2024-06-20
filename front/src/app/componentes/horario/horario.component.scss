@@ -1,0 +1,38 @@
+.horario-container {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horario-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.horario-table th, .horario-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.horario-table th {
+  background-color: #495057;
+}
+
+.horario-table td div {
+  margin: 5px 0;
+}
+
+.horario-table a {
+  text-decoration: none;
+  color: red;
+}
+
+.horario-table td:hover {
+  background-color: #495057;
+}

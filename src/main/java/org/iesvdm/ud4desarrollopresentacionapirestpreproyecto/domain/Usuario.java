@@ -1,5 +1,6 @@
 package org.iesvdm.ud4desarrollopresentacionapirestpreproyecto.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,10 +19,16 @@ public class Usuario {
     private int id;
     private String nombreUsuario;
     private String nombre;
-    private String apellido1;
-    private String apellido2;
+    private String email;
+    private String contraseña;
+    private String apellidos;
     private String telefono;
+    private String rol;
 
     @ManyToMany(mappedBy = "usuarios")
+    @JsonIgnore
     private Set<Sesion> sesiones;
+
+    @OneToMany(mappedBy = "id.usuario")
+    private Set<UsuarioArteMarcial> usuarioArteMarcials;
 }
